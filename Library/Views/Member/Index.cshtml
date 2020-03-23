@@ -1,0 +1,32 @@
+﻿@model Library.Models.Member.MemberIndexModel
+@{
+    ViewBag.Title = "Library Member List";
+}
+ <h3>@ViewBag.Title</h3>
+<div id="memberIndex">
+    <table class=" mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp customTable" id="memberIndexTable">
+        <thead>
+            <tr>
+                <th>Profile Link</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Library Card Id</th>
+                <th>Overdue Fees</th>
+                <th>Home Library</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var person in Model.Members)
+            {
+            <tr>
+                <td><a asp-controller="Member" asp-action="Detail" asp-route-id="@person.Id">(Profile)</a></td>
+                <td>@person.LastName</td>
+                <td>@person.FirstName</td>
+                <td>@person.LibraryCardId</td>
+                <td>@person.OverdueFees</td>
+                <td>@person.HomeLibrary</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
